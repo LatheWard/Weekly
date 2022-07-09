@@ -1,3 +1,4 @@
+from email import header
 import pandas as pd
 
 # filename = "RegionDelivery.csv"
@@ -23,20 +24,23 @@ import pandas as pd
 #     print('\n')
 
 df = pd.read_csv("RegionDelivery.csv")
+df2 = pd.read_csv("RegionalDelivery.csv")
 
-cols = ['DeliveryID', 
-        'Last Name', 
-        'First Name', 
-        'MiddleName', 
+cols = ['Last Name', 
+        'First Name',  
         'MedicaidNo', 
-        'ActivityDate', 
+        'ActivityDate',
+        'DeliveryID', 
         'DeliveryTime', 
         'MealType', 
         'Units', 
         'Status', 
-        'Unnamed: 10', 
         'Unnamed: 11', 
         'Unnamed: 12', 
         'Unnamed: 13']
 
-print(cols)
+df = df.reindex(columns=cols)
+
+rf_df = df[cols]
+
+print(rf_df.iloc[: , -4:])
