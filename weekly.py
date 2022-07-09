@@ -44,3 +44,6 @@ df = df.reindex(columns=cols)
 rf_df = df[cols]
 
 print(rf_df.iloc[: , -4:])
+
+
+# Open file from 'Summarize' folder, get a sum for all categories, create new excel or csv file, put sum's under columns in file
