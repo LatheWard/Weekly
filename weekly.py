@@ -43,7 +43,10 @@ cols = ['Last Name',
 df = df.reindex(columns=cols)
 
 rf_df = df[cols]
-rf_df.rename(columns={"Unnamed: 11": "County", "Unnamed: 12": "Agent", "Unnamed: 13": "City",}, inplace=True)
+rf_df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
+rf_df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
+rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
+
 
 print(rf_df.iloc[: , -4:])
 
