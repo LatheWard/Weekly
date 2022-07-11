@@ -1,5 +1,6 @@
 from email import header
 import pandas as pd
+import numpy as np
 
 # filename = "RegionDelivery.csv"
 
@@ -24,7 +25,7 @@ import pandas as pd
 #     print('\n')
 
 df = pd.read_csv("RegionDelivery.csv")
-df2 = pd.read_csv("RegionalDelivery.csv")
+
 
 cols = ['Last Name', 
         'First Name',  
@@ -42,8 +43,8 @@ cols = ['Last Name',
 df = df.reindex(columns=cols)
 
 rf_df = df[cols]
+rf_df.rename(columns={"Unnamed: 11": "County", "Unnamed: 12": "Agent", "Unnamed: 13": "City",}, inplace=True)
 
 print(rf_df.iloc[: , -4:])
-
 
 # Open file from 'Summarize' folder, get a sum for all categories, create new excel or csv file, put sum's under columns in file
