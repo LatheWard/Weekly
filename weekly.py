@@ -1,28 +1,7 @@
-from email import header
 import pandas as pd
 import numpy as np
 
-# filename = "RegionDelivery.csv"
 
-# fields = []
-# rows = []
-
-# with open(filename, 'r') as csvfile:
-#     csvreader = csv.reader(csvfile)
-#     fields = next(csvreader)
-
-#     for row in csvreader:
-#         rows.append(row)
-
-#     print("Total no. of rows: %d"%(csvreader.line_num))
-
-
-# print('Field names are:' + ', '.join(field for field in fields))
-# print('\nFirst 5 rows are:\n')
-# for row in rows[:5]:
-#     for col in row:
-#         print("%10s"%col,end=" "),
-#     print('\n')
 
 df = pd.read_csv("RegionDelivery.csv")
 
@@ -48,6 +27,8 @@ rf_df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
 rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
 
 
-print(rf_df.iloc[: , -4:])
+print(rf_df.iloc[: , :])
+
+rf_df.to_csv('summary.csv')
 
 # Open file from 'Summarize' folder, get a sum for all categories, create new excel or csv file, put sum's under columns in file
