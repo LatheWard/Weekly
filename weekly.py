@@ -28,9 +28,9 @@ rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
 sdf = pd.DataFrame #Sum Data Frame
 
 PP = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
-PL = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
-FZ = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
-SS = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
+PL = df.loc[df['MealType'] == ""]
+FZ = df.loc[df['MealType'] == ""]
+SS = df.loc[df['MealType'] == ""]
 # print(rf_df.iloc[: , :])
 
 # rf_df.to_excel('summary.xlsx', sheet_name='Report')
