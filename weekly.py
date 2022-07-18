@@ -25,17 +25,17 @@ rf_df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
 rf_df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
 rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
 
-# 'Abbeville',
-# 'Philadelphia',
-# 'Aberdeen',
-# 'Pontotoc', 
-# 'Calhoun',
-# 'Chickasaw',
-# 'Itawamba',
-# 'Lafayette',
-# 'Monroe',
-# 'Pontotoc',
-# 'Union'
+cities = ['Abbeville',
+'Philadelphia',
+'Aberdeen',
+'Pontotoc', 
+'Calhoun',
+'Chickasaw',
+'Itawamba',
+'Lafayette',
+'Monroe',
+'Pontotoc',
+'Union']
 
 
 FZ_MW = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
@@ -50,6 +50,8 @@ statedf = pd.DataFrame(columns = ['Delivered','Not Delivered' ])
 
 for i in range(len(df)):
         if df['MealType'] == "FROZEN 5PK D2D (MW)" and df['Status'] == 'Completed OKAY':
+                cCity = ' '
+                if df['City'] 
                 
         
 
