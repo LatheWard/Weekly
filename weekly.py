@@ -54,7 +54,7 @@ medicaiddf = pd.DataFrame(citynums, index=cities)
 statedf = pd.DataFrame(citynums, index=cities)
               
 print(rf_df.City.str.count('Abbe', flags=IGNORECASE).sum())      
-
+ 
 
 # print(rf_df.iloc[: , :])
 
