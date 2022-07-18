@@ -1,5 +1,7 @@
+from sys import flags
 import pandas as pd
 import numpy as np
+from re import IGNORECASE
 
 # 
 df = pd.read_csv("RegionDelivery.csv")
@@ -50,17 +52,8 @@ citynums = {
 
 medicaiddf = pd.DataFrame(citynums, index=cities)
 statedf = pd.DataFrame(citynums, index=cities)
-
-
-
-
-# if rf_df[rf_df.City.str.contains('Abbe')] and rf_df[rf_df.Status.str.contains('Completed')]:
-#                medicaiddf.at[0,'Delivered'] = medicaiddf.at[0,'Delivered'] + 1
-       
-        # rf_df['Status'][i]
-
-print(rf_df[rf_df.City.str.contains('Abbe')])               
-        
+              
+print(rf_df.City.str.count('Abbe', flags=IGNORECASE).sum())      
 
 
 # print(rf_df.iloc[: , :])
