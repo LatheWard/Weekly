@@ -25,38 +25,32 @@ rf_df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
 rf_df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
 rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
 
-stsumrows = ['Abbeville',
-           'Philadelphia',
-           'Aberdeen',
-           'Pontotoc', 
-           'Calhoun',
-           'Chickasaw',
-           'Itawamba',
-           'Lafayette',
-           'Monroe',
-           'Pontotoc',
-           'Union']
-
-stsumcols = ['Delivered',
-             'Not Delivered'
-             ]
+# 'Abbeville',
+# 'Philadelphia',
+# 'Aberdeen',
+# 'Pontotoc', 
+# 'Calhoun',
+# 'Chickasaw',
+# 'Itawamba',
+# 'Lafayette',
+# 'Monroe',
+# 'Pontotoc',
+# 'Union'
 
 
-
-FZ_ST = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
+FZ_MW = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
 
 # FZ_MW = df.loc[df['MealType'] == "FROZEN 5PK D2D (STATE)"]  
 
 # site = df.loc[df['City'].str.contains("Abbe")]
 
-medicaiddf = pd.DataFrame(columns = stsumcols, index=stsumrows)
-statedf = pd.DataFrame(columns = stsumcols, index=stsumrows)
+medicaiddf = pd.DataFrame(columns = ['Delivered','Not Delivered' ])
+statedf = pd.DataFrame(columns = ['Delivered','Not Delivered' ])
 
 
 for i in range(len(df)):
-        if df['MealType'] == "FROZEN 5PK D2D (MW)":
-                if site:
-                        sdf.append
+        if df['MealType'] == "FROZEN 5PK D2D (MW)" and df['Status'] == 'Completed OKAY':
+                
         
 
 
