@@ -37,22 +37,29 @@ cities = ['Abbeville',
 'Pontotoc',
 'Union']
 
-
-FZ_MW = df.loc[df['MealType'] == "FROZEN 5PK D2D (MW)"]
-
-# FZ_MW = df.loc[df['MealType'] == "FROZEN 5PK D2D (STATE)"]  
-
-# site = df.loc[df['City'].str.contains("Abbe")]
-
-medicaiddf = pd.DataFrame(columns = ['Delivered','Not Delivered' ])
-statedf = pd.DataFrame(columns = ['Delivered','Not Delivered' ])
+citynums = {
+  "Delivered": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  "Not Delivered": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+}
 
 
-for i in range(len(df)):
-        if df['MealType'] == "FROZEN 5PK D2D (MW)" and df['Status'] == 'Completed OKAY':
-                cCity = ' '
-                if df['City'] 
-                
+# "FROZEN 5PK D2D (MW)"
+
+# "FROZEN 5PK D2D (STATE)"
+
+
+medicaiddf = pd.DataFrame(citynums, index=cities)
+statedf = pd.DataFrame(citynums, index=cities)
+
+
+
+
+# if rf_df[rf_df.City.str.contains('Abbe')] and rf_df[rf_df.Status.str.contains('Completed')]:
+#                medicaiddf.at[0,'Delivered'] = medicaiddf.at[0,'Delivered'] + 1
+       
+        # rf_df['Status'][i]
+
+print(rf_df[rf_df.City.str.contains('Abbe')])               
         
 
 
