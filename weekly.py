@@ -53,8 +53,9 @@ citynums = {
 medicaiddf = pd.DataFrame(citynums, index=cities)
 statedf = pd.DataFrame(citynums, index=cities)
 
-if df.MealType.str = "FROZEN 5PK D2D (MW)":
+# if df.MealType.str.contains("(MW)"):
 
+for i in df.index:
   if df.City.str.count('Abbe', flags=IGNORECASE).sum() >= 1:
         medicaiddf.loc['Abbeville', 'Delivered'] += 1
 
