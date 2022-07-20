@@ -7,25 +7,25 @@ from re import IGNORECASE
 df = pd.read_csv("RegionDelivery.csv")
 
 
-cols = ['Last Name', 
-        'First Name',  
-        'MedicaidNo', 
-        'ActivityDate',
-        'DeliveryID', 
-        'DeliveryTime', 
-        'MealType', 
-        'Units', 
-        'Status', 
-        'Unnamed: 11', 
-        'Unnamed: 12', 
-        'Unnamed: 13']
+# cols = ['Last Name', 
+#         'First Name',  
+#         'MedicaidNo', 
+#         'ActivityDate',
+#         'DeliveryID', 
+#         'DeliveryTime', 
+#         'MealType', 
+#         'Units', 
+#         'Status', 
+#         'Unnamed: 11', 
+#         'Unnamed: 12', 
+#         'Unnamed: 13']
 
-df = df.reindex(columns=cols)
+# df = df.reindex(columns=cols)
 
-rf_df = df[cols]
-rf_df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
-rf_df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
-rf_df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
+# rf_df = df[cols]
+df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
+df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
+df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
 
 cities = ['Abbeville',
 'Philadelphia',
@@ -52,9 +52,13 @@ citynums = {
 
 medicaiddf = pd.DataFrame(citynums, index=cities)
 statedf = pd.DataFrame(citynums, index=cities)
-              
-print(rf_df.City.str.count('Abbe', flags=IGNORECASE).sum())      
- 
+
+if df.MealType.str = "FROZEN 5PK D2D (MW)":
+
+  if df.City.str.count('Abbe', flags=IGNORECASE).sum() >= 1:
+        medicaiddf.loc['Abbeville', 'Delivered'] += 1
+
+print(medicaiddf)
 
 # print(rf_df.iloc[: , :])
 
