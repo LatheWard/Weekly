@@ -4,8 +4,8 @@ import numpy as np
 from re import IGNORECASE
 
 # 
-df = pd.read_csv("RegionDelivery.csv")
-
+# df = pd.read_csv("06142022.csv")
+df = pd.read_csv("06142022.csv")
 
 # cols = ['Last Name', 
 #         'First Name',  
@@ -44,22 +44,26 @@ citynums = {
   "Not Delivered": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
-
 # "FROZEN 5PK D2D (MW)"
-
 # "FROZEN 5PK D2D (STATE)"
-
 
 medicaiddf = pd.DataFrame(citynums, index=cities)
 statedf = pd.DataFrame(citynums, index=cities)
 
 # if df.MealType.str.contains("(MW)"):
 
-for i in df.index:
-  if df.City.str.count('Abbe', flags=IGNORECASE).sum() >= 1:
-        medicaiddf.loc['Abbeville', 'Delivered'] += 1
+# for i in df.index:
+#   if df['MealType'][i].__contains__("(MW)"):
+#     if df['Status'][i].__contains__("Completed OKAY"):
+#       if df['City'][i] == "Abbeville":
+#          medicaiddf.loc['Abbeville', 'Delivered'] += 1
 
-print(medicaiddf)
+print(df[(df['MealType'].str.contains('(MW)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count())
+# print(df[(df['MealType'].str.contains('(STATE)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count())
+  # if df.City.str.count('Abbe', flags=IGNORECASE).sum() >= 1:
+  #       medicaiddf.loc['Abbeville', 'Delivered'] += 1
+
+
 
 # print(rf_df.iloc[: , :])
 
