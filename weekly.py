@@ -3,70 +3,50 @@ import pandas as pd
 import numpy as np
 from re import IGNORECASE
 
-# 
-# df = pd.read_csv("06142022.csv")
-df = pd.read_csv("06142022.csv")
+df = pd.read_csv("RegionDelivery (2).csv")
 
-# cols = ['Last Name', 
-#         'First Name',  
-#         'MedicaidNo', 
-#         'ActivityDate',
-#         'DeliveryID', 
-#         'DeliveryTime', 
-#         'MealType', 
-#         'Units', 
-#         'Status', 
-#         'Unnamed: 11', 
-#         'Unnamed: 12', 
-#         'Unnamed: 13']
 
-# df = df.reindex(columns=cols)
+# cities = ['Abbeville',
+# 'Philadelphia',
+# 'Aberdeen',
+# 'Pontotoc', 
+# 'Calhoun',
+# 'Chickasaw',
+# 'Itawamba',
+# 'Lafayette',
+# 'Monroe',
+# 'Pontotoc',
+# 'Union']
 
-# rf_df = df[cols]
-df.rename(columns={"Unnamed: 11": "County"}, inplace=True)
-df.rename(columns={"Unnamed: 12": "Agent"}, inplace=True)
-df.rename(columns={"Unnamed: 13": "City"}, inplace=True)
-
-cities = ['Abbeville',
-'Philadelphia',
-'Aberdeen',
-'Pontotoc', 
-'Calhoun',
-'Chickasaw',
-'Itawamba',
-'Lafayette',
-'Monroe',
-'Pontotoc',
-'Union']
-
-citynums = {
-  "Delivered": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  "Not Delivered": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-}
 
 # "FROZEN 5PK D2D (MW)"
 # "FROZEN 5PK D2D (STATE)"
 
-medicaiddf = pd.DataFrame(citynums, index=cities)
-statedf = pd.DataFrame(citynums, index=cities)
 
-# if df.MealType.str.contains("(MW)"):
+#medicaiddf = df[(df['MealType'].str.contains('(MW)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count()
 
-# for i in df.index:
-#   if df['MealType'][i].__contains__("(MW)"):
-#     if df['Status'][i].__contains__("Completed OKAY"):
-#       if df['City'][i] == "Abbeville":
-#          medicaiddf.loc['Abbeville', 'Delivered'] += 1
+medicaiddf = pd.DataFrame(df.groupby(['City', 'Status'])['DeliveryID'].count())
 
-print(df[(df['MealType'].str.contains('(MW)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count())
-# print(df[(df['MealType'].str.contains('(STATE)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count())
-  # if df.City.str.count('Abbe', flags=IGNORECASE).sum() >= 1:
-  #       medicaiddf.loc['Abbeville', 'Delivered'] += 1
+print(medicaiddf)
 
 
+writer = pd.ExcelWriter('Sum.xlsx') 
+medicaiddf.to_excel(writer, sheet_name='Report', index=False, na_rep='NaN')
 
-# print(rf_df.iloc[: , :])
+for column in medicaiddf:
+    column_length = max(medicaiddf[column].astype(str).map(len).max(), len(column))
+    col_idx = medicaiddf.columns.get_loc(column)
+    writer.sheets['Report'].set_column(col_idx, col_idx, column_length)
 
-# rf_df.to_excel('summary.xlsx', sheet_name='Report')
 
-# Open file from 'Summarize' folder, get a sum for all categories, create new excel or csv file, put sum's under columns in file
+
+col_idx = df.columns.get_loc('City')
+writer.sheets['Report'].set_column(col_idx, col_idx, 15)
+
+col_idx = df.columns.get_loc('Status')
+writer.sheets['Report'].set_column(col_idx, col_idx, 15)
+
+col_idx = df.columns.get_loc('DeliveryID')
+writer.sheets['Report'].set_column(col_idx, col_idx, 15)
+
+writer.save()
