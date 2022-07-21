@@ -23,9 +23,7 @@ df = pd.read_csv("RegionDelivery (2).csv")
 # "FROZEN 5PK D2D (STATE)"
 
 
-#medicaiddf = df[(df['MealType'].str.contains('(MW)')) & (df['Status'].str.contains('Completed OKAY'))].groupby('City')['DeliveryID'].count()
-
-medicaiddf = pd.DataFrame(df.groupby(['City', 'Status'])['DeliveryID'].count())
+medicaiddf = pd.DataFrame(df.groupby(['MealType', 'City', 'Status'])['DeliveryID'].count())
 
 writer = pd.ExcelWriter('Sum.xlsx', engine='xlsxwriter')
 medicaiddf.to_excel(writer, sheet_name="Summary")
