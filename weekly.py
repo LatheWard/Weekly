@@ -27,26 +27,13 @@ df = pd.read_csv("RegionDelivery (2).csv")
 
 medicaiddf = pd.DataFrame(df.groupby(['City', 'Status'])['DeliveryID'].count())
 
-print(medicaiddf)
-
-
-writer = pd.ExcelWriter('Sum.xlsx') 
-medicaiddf.to_excel(writer, sheet_name='Report', index=False, na_rep='NaN')
-
-for column in medicaiddf:
-    column_length = max(medicaiddf[column].astype(str).map(len).max(), len(column))
-    col_idx = medicaiddf.columns.get_loc(column)
-    writer.sheets['Report'].set_column(col_idx, col_idx, column_length)
-
-
-
-col_idx = df.columns.get_loc('City')
-writer.sheets['Report'].set_column(col_idx, col_idx, 15)
-
-col_idx = df.columns.get_loc('Status')
-writer.sheets['Report'].set_column(col_idx, col_idx, 15)
-
-col_idx = df.columns.get_loc('DeliveryID')
-writer.sheets['Report'].set_column(col_idx, col_idx, 15)
-
+writer = pd.ExcelWriter('Sum.xlsx', engine='xlsxwriter')
+medicaiddf.to_excel(writer, sheet_name="Summary")
+workbook = writer.book
+worksheet = writer.sheets["Summary"]
+#set the column width as per your requirement
+worksheet.set_column('A:A', 25)
+worksheet.set_column('B:B', 25)
+worksheet.set_column('C:C', 25)
 writer.save()
+
