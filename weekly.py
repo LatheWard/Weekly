@@ -12,9 +12,13 @@ df = pd.read_csv(filename)
 
 # "FROZEN 5PK D2D (MW)"
 # "FROZEN 5PK D2D (STATE)"
+mostRecentDate = df['ActivityDate'].max()
+leastRecentDate = df['ActivityDate'].min()
 
 rdf = df.groupby(['MealType', 'City', 'Status'])['DeliveryID'].count()
 rdf.to_frame()
+
+
 
 writer = pd.ExcelWriter('Sum.xlsx', engine='xlsxwriter')
 rdf.to_excel(writer, sheet_name="Summary")
@@ -34,7 +38,14 @@ for i in range(1, len(rdf)):
 worksheet.set_column('A:A', 25)
 worksheet.set_column('B:B', 25)
 worksheet.set_column('C:C', 25)
-worksheet.set_column('D:D', 19)
+worksheet.set_column('D:D', 17)
+
+worksheet.write(0,6, 'Start Date')
+worksheet.write(0,5, 'Last Date')
+worksheet.write(1,5, mostRecentDate)
+worksheet.write(1,6, leastRecentDate)
+worksheet.set_column('F:F', 20)
+worksheet.set_column('G:G', 20)
 
 writer.save()
 
