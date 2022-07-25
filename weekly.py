@@ -1,9 +1,11 @@
 from sys import flags
 import pandas as pd
 import numpy as np
-from re import IGNORECASE
 from tkinter.filedialog import askopenfilename
-filename = askopenfilename(filetypes=[("Excel files", ".xlsx .csv")])
+import getpass
+
+user = getpass.getuser()
+filename = askopenfilename(filetypes=[("Excel files", ".xlsx .csv")], initialdir='C:/Users/%s' % user + '/Downloads')
 
 df = pd.read_csv(filename)
 
@@ -27,7 +29,7 @@ worksheet = writer.sheets["Summary"]
 formatL = workbook.add_format({'bold': True})
 formatL.set_align('left')
   
-for i in range(1, len(rdf)): 
+for i in range(1, len(rdf)+1): 
     worksheet.set_row(i, cell_format=(formatL))
 
 worksheet.set_column('A:A', 25)
