@@ -29,7 +29,11 @@ format1 = workbook.add_format({'bg_color': '#9AD7A4',
 #Gold
 format2 = workbook.add_format({'bg_color': '#F0CA86',
                                'font_color': '#000000'})
-
+            
+#Align Left
+formatL = workbook.add_format({'bold': True})
+formatL.set_align('left')
+  
 for i in range(1, len(rdf)): 
     worksheet.set_row(i, cell_format=(format1 if i%2==0 else format2))  
 
@@ -37,7 +41,7 @@ for i in range(1, len(rdf)):
 worksheet.set_column('A:A', 25)
 worksheet.set_column('B:B', 25)
 worksheet.set_column('C:C', 25)
-worksheet.set_column('D:D', 17)
+worksheet.set_column('D:D', 17, formatL)
 
 worksheet.write(0,6, 'Start Date')
 worksheet.write(0,5, 'Last Date')
@@ -46,7 +50,5 @@ worksheet.write(1,6, leastRecentDate)
 worksheet.set_column('F:F', 20)
 worksheet.set_column('G:G', 20)
 
-worksheet.write(0, 3, "Totals")
+worksheet.write(0, 3, "Totals", formatL)
 writer.save()
-
-print(rdf)
