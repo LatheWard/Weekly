@@ -42,5 +42,4 @@ worksheet.write(1,6, leastRecentDate)
 worksheet.set_column('F:F', 20)
 worksheet.set_column('G:G', 20)
 
-worksheet.write(0, 3, "Totals", formatL)
 writer.save()
