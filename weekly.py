@@ -18,8 +18,6 @@ leastRecentDate = df['ActivityDate'].min()
 rdf = df.groupby(['MealType', 'City', 'Status'])['DeliveryID'].count()
 rdf.to_frame()
 
-
-
 writer = pd.ExcelWriter('Sum.xlsx', engine='xlsxwriter')
 rdf.to_excel(writer, sheet_name="Summary")
 workbook = writer.book
@@ -33,7 +31,8 @@ format2 = workbook.add_format({'bg_color': '#F0CA86',
                                'font_color': '#000000'})
 
 for i in range(1, len(rdf)): 
-    worksheet.set_row(i, cell_format=(format1 if i%2==0 else format2))   
+    worksheet.set_row(i, cell_format=(format1 if i%2==0 else format2))  
+
 
 worksheet.set_column('A:A', 25)
 worksheet.set_column('B:B', 25)
