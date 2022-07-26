@@ -17,7 +17,7 @@ df = pd.read_csv(filename)
 mostRecentDate = df['ActivityDate'].max()
 leastRecentDate = df['ActivityDate'].min()
 
-rdf = df.groupby(['MealType', 'City', 'Status'])['DeliveryID'].count()
+rdf = df.groupby(['MealType', 'County', 'Status'])['DeliveryID'].count()
 rdf.to_frame()
 
 writer = pd.ExcelWriter('Sum.xlsx', engine='xlsxwriter')
