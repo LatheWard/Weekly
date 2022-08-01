@@ -22,7 +22,7 @@ Get Data
 6. Press the “crtl” and “s” keys simultaneously to save the changes you’ve made.
 
 Creating the Summary
-7.	Double click ValleySum.exe to execute
-8.	The program will open your downloads folder. Select the newly downloaded file.
-9.	After running ValleySum, you should see a new file on your desktop named “Sum.xlsx”. 
-10.	Double Click and rename file to time span (Ex. Weekof07042022, MonthofJuly2022, etc.)
+1. Double click ValleySum.exe to execute
+2.	The program will open your downloads folder. Select the newly downloaded file.
+3.  After running ValleySum, you should see a new file on your desktop named “Sum.xlsx”. 
+4.	Double Click and rename file to time span (Ex. Weekof07042022, MonthofJuly2022, etc.)
