@@ -20,8 +20,9 @@ Get Data
 4.	After exporting data, open File Explorer and open the new file, or open the file location by right clicking on the download from your browser 
 5.	Open the .csv file and rename Column L “County”, Column M “Agent”, and Column N “City”.
 6. Press the “crtl” and “s” keys simultaneously to save the changes you’ve made.
+
 Creating the Summary
-6.	Double click ValleySum.exe to execute
-7.	The program will open your downloads folder. Select the newly downloaded file.
-8.	After running ValleySum, you should see a new file on your desktop named “Sum.xlsx”. 
-9.	Double Click and rename file to time span (Ex. Weekof07042022, MonthofJuly2022, etc.)
+7.	Double click ValleySum.exe to execute
+8.	The program will open your downloads folder. Select the newly downloaded file.
+9.	After running ValleySum, you should see a new file on your desktop named “Sum.xlsx”. 
+10.	Double Click and rename file to time span (Ex. Weekof07042022, MonthofJuly2022, etc.)
